@@ -1,0 +1,484 @@
+# Predicting 10-Year Coronary Heart Disease Risk Using Machine Learning
+
+## Project Overview
+
+Cardiovascular disease (CVD) remains the leading cause of death worldwide, accounting for approximately 17.9 million deaths each year according to the World Health Organization (WHO). Early identification of individuals at high risk for coronary heart disease (CHD) can enable preventative treatment strategies and lifestyle interventions before clinical symptoms develop.
+
+The objective of this project is to develop and compare multiple supervised machine learning models for predicting the likelihood of developing coronary heart disease within ten years using demographic, behavioral, and clinical health information collected from the Framingham Heart Study dataset.
+
+Three machine learning algorithms are implemented and evaluated:
+
+- Linear Regression
+- Logistic Regression
+- K-Nearest Neighbors (KNN)
+
+Each model is trained using identical predictor variables and evaluated using multiple classification metrics to determine which algorithm provides the most accurate and clinically useful predictions.
+
+---
+
+# Project Objectives
+
+The goals of this project are to:
+
+- Perform exploratory data analysis (EDA)
+- Investigate relationships among clinical variables
+- Handle missing values appropriately
+- Prepare the dataset for machine learning
+- Compare multiple preprocessing strategies
+- Train three predictive machine learning models
+- Optimize KNN hyperparameters
+- Evaluate each model using multiple performance metrics
+- Identify influential risk factors associated with coronary heart disease
+- Determine which model performs best overall
+
+---
+
+# Dataset
+
+**Dataset**
+
+Framingham Heart Study
+
+Source:
+
+https://www.kaggle.com/datasets/dileep070/heart-disease-prediction-using-logistic-regression
+
+The Framingham Heart Study is one of the most influential longitudinal studies investigating cardiovascular disease risk. The dataset contains demographic, behavioral, and clinical variables used to predict whether an individual develops coronary heart disease within ten years.
+
+---
+
+# Target Variable
+
+| Variable | Description |
+|-----------|-------------|
+| TenYearCHD | Indicates whether the patient develops coronary heart disease within 10 years (0 = No, 1 = Yes) |
+
+---
+
+# Predictor Variables
+
+### Demographic
+
+- age
+- male
+- education
+
+### Behavioral
+
+- currentSmoker
+- cigsPerDay
+
+### Medical History
+
+- BPMeds
+- prevalentStroke
+- prevalentHyp
+- diabetes
+
+### Clinical Measurements
+
+- totChol
+- sysBP
+- diaBP
+- BMI
+- heartRate
+- glucose
+
+---
+
+# Project Structure
+
+```
+AML_FINAL_PROJECT/
+│
+├── README.md
+│
+├── data/
+│   ├── raw/
+│   │   └── framingham.csv
+│   │
+│   └── processed/
+│       ├── X_train_clean.csv
+│       ├── X_test_clean.csv
+│       ├── X_train_standard.csv
+│       ├── X_test_standard.csv
+│       ├── X_train_minmax.csv
+│       ├── X_test_minmax.csv
+│       ├── y_train.csv
+│       └── y_test.csv
+│
+├── notebooks/
+│   ├── 01_EDA.ipynb
+│   ├── 02_data_preprocessing.ipynb
+│   ├── 03_model_training.ipynb
+│   ├── 04_model_comparison.ipynb
+│   └── 05_final_analysis.ipynb
+│
+├── results/
+│   ├── classification_metrics.csv
+│   ├── final_model_comparison.csv
+│   ├── linear_regression_metrics.csv
+│   ├── logistic_regression_coefficients.csv
+│   ├── knn_grid_search_results.csv
+│   │
+│   ├── models/
+│   │
+│   ├── predictions/
+│   │
+│   └── figures/
+│
+└── requirements.txt
+```
+
+---
+
+# Project Workflow
+
+```
+Raw Dataset
+      │
+      ▼
+Exploratory Data Analysis
+      │
+      ▼
+Data Cleaning
+      │
+      ▼
+Missing Value Imputation
+      │
+      ▼
+Train/Test Split
+      │
+      ▼
+Feature Scaling
+      │
+      ▼
+Linear Regression
+Logistic Regression
+KNN
+      │
+      ▼
+Model Evaluation
+      │
+      ▼
+Model Comparison
+      │
+      ▼
+Final Conclusions
+```
+
+---
+
+# Notebook Descriptions
+
+## 01_EDA.ipynb
+
+Exploratory data analysis includes:
+
+- Dataset overview
+- Summary statistics
+- Missing value analysis
+- Duplicate detection
+- Target variable distribution
+- Histograms
+- Boxplots
+- Correlation heatmap
+- Feature relationships
+- Initial observations
+
+---
+
+## 02_data_preprocessing.ipynb
+
+Preprocessing steps include:
+
+- Cleaning column names
+- Removing duplicates
+- Handling missing values
+- Separating predictors and target
+- Train/test split
+- Median imputation
+- Mode imputation
+- Standard scaling
+- Min-Max scaling
+- Saving processed datasets
+
+---
+
+## 03_model_training.ipynb
+
+Model development includes:
+
+### Linear Regression
+
+- Model fitting
+- Regression metrics
+- Binary classification threshold
+- Confusion matrix
+
+### Logistic Regression
+
+- Model fitting
+- Probability prediction
+- Feature coefficients
+- Odds ratios
+- Classification metrics
+
+### K-Nearest Neighbors
+
+- Baseline model
+- Hyperparameter tuning
+- Cross-validation
+- GridSearchCV
+- Optimized model
+
+---
+
+## 04_model_comparison.ipynb
+
+Comparison includes:
+
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+- ROC-AUC
+- Confusion matrices
+- ROC curves
+- False negatives
+- Training vs testing accuracy
+- Feature importance
+- KNN tuning analysis
+
+---
+
+## 05_final_analysis.ipynb
+
+Final notebook includes:
+
+- Interpretation of results
+- Best performing model
+- Clinical implications
+- Model limitations
+- Future improvements
+
+---
+
+# Data Preprocessing
+
+The following preprocessing steps were performed:
+
+- Duplicate observations removed
+- Missing target values removed
+- Continuous variables imputed using the median
+- Binary variables imputed using the mode
+- Dataset split into training and testing sets
+- Stratified train-test split
+- Standard scaling
+- Min-Max scaling
+- Processed datasets saved for model training
+
+---
+
+# Machine Learning Models
+
+## Linear Regression
+
+Although linear regression is intended for continuous outcomes, it is included as a baseline comparison model.
+
+---
+
+## Logistic Regression
+
+Logistic regression predicts the probability of developing coronary heart disease using the logistic function and provides interpretable feature coefficients.
+
+---
+
+## K-Nearest Neighbors (KNN)
+
+KNN classifies patients according to the most common class among their nearest neighbors.
+
+Hyperparameters optimized include:
+
+- Number of neighbors
+- Weighting method
+- Distance metric
+
+using GridSearchCV.
+
+---
+
+# Model Evaluation Metrics
+
+Each model is evaluated using:
+
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+- ROC Curve
+- ROC-AUC
+- Confusion Matrix
+- Mean Squared Error (Linear Regression)
+- Mean Absolute Error (Linear Regression)
+- R² Score (Linear Regression)
+
+---
+
+# Why ROC-AUC?
+
+ROC-AUC measures a model's ability to distinguish between patients who will and will not develop coronary heart disease across all possible classification thresholds.
+
+Higher ROC-AUC values indicate better discrimination between positive and negative cases.
+
+---
+
+# Feature Scaling
+
+Two scaling methods are implemented.
+
+## StandardScaler
+
+Centers variables around zero with unit variance.
+
+Used for:
+
+- Logistic Regression
+- KNN
+
+---
+
+## MinMaxScaler
+
+Scales variables between 0 and 1.
+
+Implemented for comparison purposes.
+
+---
+
+# Results Generated
+
+The project produces:
+
+- Processed datasets
+- Saved machine learning models
+- Prediction tables
+- Classification metrics
+- Confusion matrices
+- ROC curves
+- Feature coefficient plots
+- KNN tuning plots
+- Model comparison figures
+
+---
+
+# Required Python Packages
+
+```
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+joblib
+pathlib
+```
+
+Install using:
+
+```bash
+pip install pandas numpy matplotlib seaborn scikit-learn joblib
+```
+
+---
+
+# Reproducing the Project
+
+1. Clone the repository.
+
+2. Install dependencies.
+
+3. Download the Framingham dataset.
+
+4. Place
+
+```
+framingham.csv
+```
+
+inside
+
+```
+data/raw/
+```
+
+5. Run notebooks in order:
+
+```
+01_EDA.ipynb
+
+↓
+
+02_data_preprocessing.ipynb
+
+↓
+
+03_model_training.ipynb
+
+↓
+
+04_model_comparison.ipynb
+
+↓
+
+05_final_analysis.ipynb
+```
+
+---
+
+# Expected Outputs
+
+After running all notebooks, the project generates:
+
+- Cleaned datasets
+- Trained machine learning models
+- Model predictions
+- Performance metrics
+- ROC curves
+- Confusion matrices
+- Model comparison figures
+- Final evaluation tables
+
+---
+
+# Future Improvements
+
+Potential extensions of this project include:
+
+- Random Forest
+- XGBoost
+- Support Vector Machines
+- Neural Networks
+- Feature selection techniques
+- SHAP explainability
+- Ensemble learning
+- External validation datasets
+- Hyperparameter optimization using Bayesian search
+
+---
+
+# Authors
+
+Grace Scanlan
+
+Tavi Mongoma
+
+MSBD 550 – Applied Machine Learning for Biomedical Data Science
+
+Meharry Medical College
+
+---
+
+# Acknowledgments
+
+This project was completed as part of the MSBD 550 Applied Machine Learning for Biomedical Data Science course at Meharry Medical College using the Framingham Heart Study dataset made publicly available through Kaggle.
