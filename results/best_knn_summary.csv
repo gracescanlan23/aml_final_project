@@ -1,0 +1,5 @@
+Setting,Value
+Number of Neighbors,31
+Weights,distance
+Distance Metric,euclidean
+Cross-Validation ROC-AUC,0.6919

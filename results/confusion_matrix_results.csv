@@ -1,0 +1,4 @@
+Model,True Negatives,False Positives,False Negatives,True Positives
+Linear Regression,717,2,125,4
+Logistic Regression,711,8,120,9
+KNN,716,3,126,3

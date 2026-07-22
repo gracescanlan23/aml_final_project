@@ -1,0 +1,4 @@
+Model,Accuracy,Precision,Recall,F1 Score,ROC AUC,Training Accuracy,Testing Accuracy,Accuracy Gap,True Negatives,False Positives,False Negatives,True Positives,Average Rank
+Logistic Regression,0.8491,0.5294,0.0698,0.1233,0.6996,0.8572,0.8491,0.0081,711,8,120,9,1.4
+Linear Regression,0.8502,0.6667,0.031,0.0593,0.6952,0.8531,0.8502,0.0029,717,2,125,4,1.6
+KNN,0.8479,0.5,0.0233,0.0444,0.6511,1.0,0.8479,0.1521,716,3,126,3,3.0

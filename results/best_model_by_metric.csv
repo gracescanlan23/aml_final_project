@@ -1,0 +1,6 @@
+Metric,Best Model,Best Score
+Accuracy,Linear Regression,0.8502
+Precision,Linear Regression,0.6667
+Recall,Logistic Regression,0.0698
+F1 Score,Logistic Regression,0.1233
+ROC AUC,Logistic Regression,0.6996
